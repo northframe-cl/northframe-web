@@ -1,0 +1,23 @@
+SITIO NORTH FRAME - CÓMO SUBIRLO A NETLIFY
+
+Páginas: index (inicio), web, marca, contenido-ia, crecimiento, trabajos, paquetes, estudio, contacto, privacidad y gracias.
+Trabajos: capturas de Curare l'Auto, Pristine y Latitud Norte en assets/casos. Los archivos demo-*.html ya no se usan (redirigen a Trabajos); puedes borrarlos.
+Estilos y funciones compartidas en la carpeta "assets".
+
+1. Entra a app.netlify.com > Add new site > Deploy manually.
+2. Arrastra ESTA CARPETA completa (06 Pagina web).
+3. Formulario de contacto (recibir solicitudes en tu correo):
+   - En tu sitio de Netlify ve a "Forms" y presiona "Enable form detection".
+   - Vuelve a subir la carpeta (Deploys > arrastrar) para que Netlify detecte el formulario "contacto".
+   - En Forms > Form notifications > Add notification > Email notification, pon tu correo.
+   - Cada solicitud llegará a tu correo y quedará guardada en Netlify (el plan gratis incluye 100 al mes).
+4. Instagram: copia el link .netlify.app (o tu dominio cuando lo compres) en tu perfil > Editar perfil > Enlaces.
+5. Antes de lanzar anuncios: crea tu Píxel de Meta y tu propiedad de Google Analytics 4,
+   y pega sus códigos en assets/main.js (líneas META_PIXEL_ID y GA4_ID, arriba del todo).
+   El formulario y los clics a Instagram se registran solos como contacto.
+6. Para actualizar: Deploys > arrastra la carpeta de nuevo.
+
+NOMBRE DEL SITIO EN NETLIFY
+El sitio está preparado para la dirección https://northframe.cl (vista previa al compartir
+el link en Instagram/WhatsApp, sitemap y Google). En Netlify: Site configuration > Change site name > "northframe".
+Si ese nombre está ocupado o cuando compres tu dominio, avísale a Claude para actualizar la dirección.

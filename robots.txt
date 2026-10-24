@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /gracias
+Disallow: /propuesta
+Disallow: /generador
+Sitemap: https://northframe.cl/sitemap.xml

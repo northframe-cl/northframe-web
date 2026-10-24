@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Generador de propuestas · North Frame (uso interno)</title>
+<link rel="icon" href="assets/logo-ciervo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600&family=Fraunces:opsz,wght@9..144,600&family=Archivo+Black&family=DM+Serif+Display&family=Jost:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+.pp-hero{padding:120px 0 64px}
+.pp-hero h1{font-size:clamp(36px,5.4vw,64px);line-height:1.04;max-width:16ch}
+.pp-hero .lead{max-width:56ch;margin-top:24px}
+[data-wa][hidden]{display:none!important}
+.pp-seen{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.pp-chip{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid var(--line);border-radius:99px;background:var(--card);font-size:15px}
+.pp-chip.no{border-color:#7a3b3b;color:#f1b4b4}
+.pp-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:56px;align-items:center}
+.mock{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;color:#1b2230;box-shadow:0 40px 80px -40px rgba(0,0,0,.6)}
+.mock-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#e9edf2;font:500 13px/1 "JetBrains Mono",monospace;color:#4a5568}
+.mock-bar i{width:10px;height:10px;border-radius:50%;background:#c7ced8;display:inline-block}
+.mock-bar span{margin-left:10px;background:#fff;border-radius:6px;padding:6px 10px;flex:1}
+.mock-nav{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;font:600 15px "Jost",sans-serif}
+.mock-nav em{font-style:normal;font-size:12px;padding:8px 12px;border-radius:99px;color:#fff;background:var(--mk)}
+.mock-hero{padding:28px 22px 30px;background:linear-gradient(180deg,color-mix(in srgb,var(--mk) 10%,#fff),#fff)}
+.mock-hero b{display:block;font:700 clamp(22px,2.6vw,30px)/1.1 "Bricolage Grotesque",sans-serif;max-width:18ch}
+.mock-hero p{margin:10px 0 16px;font-size:14px;color:#4a5568;max-width:40ch}
+.mock-btns{display:flex;gap:8px}.mock-btns span{font:600 12px "Jost",sans-serif;padding:9px 14px;border-radius:8px;background:var(--mk);color:#fff}.mock-btns span+span{background:#25D366}
+.mock-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:0 22px 24px}
+.mock-row div{height:64px;border-radius:8px;background:color-mix(in srgb,var(--mk) 14%,#f3f5f8);font:500 11px "Jost",sans-serif;color:#4a5568;display:flex;align-items:flex-end;padding:8px}
+.pp-list{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:14px}
+.pp-list li{padding-left:30px;position:relative}.pp-list li::before{content:"";position:absolute;left:0;top:7px;width:14px;height:14px;border-radius:4px;background:var(--aurora)}
+.pp-cases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:40px}
+.pp-case{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;color:inherit;text-decoration:none;display:block}
+.pp-case img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.pp-case div{padding:16px 18px 20px}.pp-case b{display:block;font-size:18px}.pp-case span{color:var(--mist);font-size:14px}
+.pp-steps{list-style:none;counter-reset:s;padding:0;margin:36px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.pp-steps li{counter-increment:s;border-top:2px solid var(--aurora);padding-top:14px}.pp-steps li::before{content:counter(s);display:block;font:600 28px "Bricolage Grotesque";color:var(--aurora)}
+.pp-steps p{color:var(--mist);font-size:15px;margin-top:6px}
+.pp-final{padding:96px 0;text-align:center}.pp-final h2{max-width:22ch;margin:0 auto}.pp-final p{color:var(--mist);margin:16px auto 0;max-width:52ch}.pp-final .cta-row{justify-content:center}
+.pp-small{color:var(--mist);font-size:14px;margin-top:28px}
+@media (max-width:900px){.pp-grid,.pp-cases,.pp-steps{grid-template-columns:1fr}.pp-hero{padding:96px 0 48px}}
+</style>
+</head>
+<body>
+<main class="wrap" style="padding:56px 0 96px">
+<h1 style="font-size:clamp(30px,4vw,44px)">Generador de propuestas</h1>
+<p class="muted" style="margin-top:12px;max-width:62ch">Uso interno. Completa los datos del negocio (sacados de Huntly o Google Maps), copia el link y el mensaje, o abre WhatsApp directo. No se guarda nada: esta página solo arma el link.</p>
+<form id="g" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:32px;max-width:860px" onsubmit="return false">
+<label class="fld">Nombre del negocio<input name="n" required placeholder="Ej: Peluquería Rosita"></label>
+<label class="fld">Rubro<select name="r"><option value="pro">Servicios profesionales</option><option value="com">Comercio / catálogo</option><option value="sal">Salud y belleza</option><option value="hogar">Servicios a domicilio</option><option value="gas">Gastronomía</option><option value="otro" selected>Otro</option></select></label>
+<label class="fld">Comuna<input name="c" placeholder="Ej: Maipú"></label>
+<label class="fld">Teléfono del negocio (para abrir WhatsApp)<input name="tel" inputmode="tel" placeholder="Ej: 9 1234 5678"></label>
+<label class="fld">Estrellas en Google (opcional)<input name="e" inputmode="decimal" placeholder="Ej: 4,8"></label>
+<label class="fld">N° de reseñas (opcional)<input name="v" inputmode="numeric" placeholder="Ej: 37"></label>
+<label class="fld" style="grid-column:1/-1">Tu WhatsApp para que te respondan (opcional, cuando tengas el chip)<input name="w" inputmode="tel" placeholder="Ej: 56912345678"></label>
+</form>
+<div style="margin-top:32px;max-width:860px;display:grid;gap:14px">
+<label class="fld">Link de la propuesta<input id="link" readonly></label>
+<label class="fld">Mensaje para WhatsApp<textarea id="msg" rows="6"></textarea></label>
+<div class="cta-row"><button class="btn primary" type="button" id="copyL"><span class="roll"><span>Copiar link</span><span aria-hidden="true">Copiar link</span></span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button><button class="btn line" type="button" id="copyM"><span class="roll"><span>Copiar mensaje</span><span aria-hidden="true">Copiar mensaje</span></span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button><a class="btn line" id="openW" target="_blank" rel="noopener"><span class="roll"><span>Abrir WhatsApp del negocio</span><span aria-hidden="true">Abrir WhatsApp del negocio</span></span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="btn line" id="prev" target="_blank" rel="noopener"><span class="roll"><span>Ver propuesta</span><span aria-hidden="true">Ver propuesta</span></span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+<p class="muted" id="ok" aria-live="polite" style="min-height:1.5em"></p>
+<p class="muted" style="font-size:14px">Recomendaciones: máximo 15 a 20 mensajes al día, escribe de lunes a viernes entre 10:00 y 18:00, y anota cada contacto en la planilla de prospectos. Si alguien pide que no le escribas, márcalo y no insistas.</p>
+</div>
+</main>
+<style>.fld{display:grid;gap:6px;font-size:14px;color:var(--mist)}.fld input,.fld select,.fld textarea{font:400 16px Jost,sans-serif;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ice);width:100%}@media(max-width:700px){#g{grid-template-columns:1fr!important}}</style>
+<script>
+(function(){
+var f=document.getElementById("g"),L=document.getElementById("link"),M=document.getElementById("msg"),W=document.getElementById("openW"),P=document.getElementById("prev"),ok=document.getElementById("ok");
+var base=location.href.replace(/generador(\.html)?.*$/,"")+"propuesta";
+function up(){var d=new FormData(f),p=new URLSearchParams();["n","r","c","e","v","w"].forEach(function(k){var x=(d.get(k)||"").trim();if(x)p.set(k,x)});
+ var link=base+"?"+p.toString();L.value=link;P.href=link;
+ var n=(d.get("n")||"").trim()||"tu negocio",e=(d.get("e")||"").trim(),v=(d.get("v")||"").trim();
+ var rep=e?" Vi que tienes "+e+" estrellas"+(v?" con "+v+" reseñas":"")+" en Google Maps, pero no tienes página web.":" Vi tu negocio en Google Maps y noté que no tienes página web.";
+ M.value="Hola, ¿hablo con "+n+"? Soy Javier, de North Frame: hago páginas web para pymes en Santiago."+rep+" Te preparé una propuesta corta de cómo podría verse la tuya:\n"+link+"\nSi no te interesa, me dices y no te vuelvo a escribir. ¡Saludos!";
+ var t=(d.get("tel")||"").replace(/\D/g,"");if(t.length===9&&t[0]==="9")t="56"+t;else if(t.length===8)t="569"+t;
+ W.href=t?"https://wa.me/"+t+"?text="+encodeURIComponent(M.value):"#";W.style.opacity=t?1:.4}
+f.addEventListener("input",up);M.addEventListener("input",function(){var t=(new FormData(f).get("tel")||"").replace(/\D/g,"");if(t.length===9)t="56"+t;W.href=t?"https://wa.me/"+t+"?text="+encodeURIComponent(M.value):"#"});
+function cp(el,txt){(navigator.clipboard?navigator.clipboard.writeText(el.value):Promise.reject()).then(function(){ok.textContent=txt},function(){el.select();document.execCommand("copy");ok.textContent=txt})}
+document.getElementById("copyL").onclick=function(){cp(L,"Link copiado.")};document.getElementById("copyM").onclick=function(){cp(M,"Mensaje copiado.")};
+up();})();
+</script>
+</body></html>
