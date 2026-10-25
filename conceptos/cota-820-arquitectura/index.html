@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta name="robots" content="noindex">
 <meta charset="utf-8">
+<meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>COTA 820 Arquitectos</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -33,7 +33,7 @@
 }
 *{box-sizing:border-box}
 html{background:var(--ink)}
-body{background:var(--ink);color:var(--travertine);font-family:var(--f-body);font-size:16px;line-height:1.6;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{margin:0;background:var(--ink);color:var(--travertine);font-family:var(--f-body);font-size:16px;line-height:1.6;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
@@ -213,7 +213,7 @@ em{font-style:italic;color:var(--brass)}
 footer{padding-block:clamp(70px,9vw,120px) 40px;border-top:1px solid var(--line)}
 .f-mark{font-family:var(--f-display);font-size:clamp(76px,17vw,260px);line-height:.85;letter-spacing:-.02em;color:var(--travertine)}
 .f-mark em{font-style:italic}
-.f-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:56px;padding-top:24px;border-top:1px solid var(--line);font-size:14px;color:var(--trav-2)}
+.f-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:0;padding-top:24px;border-top:1px solid var(--line);font-size:14px;color:var(--trav-2)}
 .f-row .mono{display:block;color:var(--muted);margin-bottom:8px;font-size:10px}
 .f-row a:hover{color:var(--brass)}
 .f-legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:56px;color:var(--muted);font-size:12.5px}
@@ -472,7 +472,6 @@ html.lenis,html.lenis body{height:auto}
 
 <footer>
   <div class="wrap">
-    <div class="f-mark">COTA <em>820</em></div>
     <div class="f-row">
       <div><span class="mono">Estudio</span>Vitacura, Santiago<br>Chile</div>
       <div><span class="mono">Contacto</span>hola@cota820.cl<br>+56 9 5555 0820</div>
