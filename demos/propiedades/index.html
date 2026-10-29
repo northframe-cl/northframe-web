@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Propiedades · Propuesta de diseño web</title>
+<meta name="description" content="Propuesta de página web para corredoras de propiedades e inmobiliarias, diseñada por North Frame.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Figtree:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brand:#1F4E5F; --brand-2:#163945; --sand:#F4EFE6; --paper:#FBF9F5; --ink:#1B2124; --mute:#6A7175; --line:#E3DDD2; --gold:#C49A5A;
+  --r:18px; --pad:max(16px,env(safe-area-inset-left));
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1180px,100% - 2*var(--pad));margin:0 auto}
+.mono{font-family:"DM Mono",ui-monospace,monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+h1,h2,h3{font-family:"Playfair Display",Georgia,serif;font-weight:600;line-height:1.08;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(32px,4.2vw,52px)}
+.lead{color:var(--mute);max-width:56ch;margin:14px 0 0}
+.sec{padding:clamp(72px,9vw,120px) 0}
+.eyebrow{color:var(--brand);display:block;margin-bottom:14px}
+
+/* franja de propuesta */
+.pitch{background:var(--ink);color:#EDE7DC;font-size:14px;text-align:center;padding:10px var(--pad)}
+.pitch b{color:#fff}
+.pitch a{color:var(--gold);font-weight:600;text-decoration:none;white-space:nowrap}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:30;transition:background .3s,box-shadow .3s}
+.nav.solid{background:rgba(251,249,245,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:28px;height:76px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:700;font-size:18px;min-width:0}
+.logo .m{width:40px;height:40px;border-radius:12px;background:var(--brand);color:#fff;display:grid;place-items:center;font-family:"Playfair Display",serif;font-size:18px;flex:none}
+.logo span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.links{display:flex;gap:26px;margin-left:auto;font-size:15px;font-weight:500}
+.links a{text-decoration:none;color:var(--mute)}.links a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;padding:14px 22px;font:600 15px/1 Figtree,sans-serif;text-decoration:none;cursor:pointer;transition:transform .2s,background .2s,box-shadow .2s;white-space:nowrap}
+.btn:active{transform:scale(.97)}
+.btn.pri{background:var(--brand);color:#fff;box-shadow:0 10px 24px -12px var(--brand)}
+.btn.pri:hover{background:var(--brand-2)}
+.btn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink)}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* hero */
+.hero{padding:28px 0 0;text-align:center}
+.hero h1{font-size:clamp(40px,6.4vw,84px);max-width:15ch;margin:14px auto 0}
+.hero h1 em{font-style:italic;color:var(--brand)}
+.hero .lead{margin:18px auto 0;text-align:center}
+.capsule{position:relative;margin:44px auto 0;height:clamp(300px,42vw,520px);border-radius:999px 999px var(--r) var(--r);overflow:hidden;background:#C9C2B6 linear-gradient(135deg,#d8d1c4,#b9b0a2)}
+.capsule img{width:100%;height:100%;object-fit:cover;color:transparent}
+.capsule:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.35))}
+.capsule .cap{position:absolute;left:28px;bottom:22px;z-index:1;color:#fff;font-size:13px;text-align:left}
+.search{position:relative;z-index:2;margin:-46px auto 0;width:min(940px,100%);background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 30px 60px -30px rgba(20,30,35,.35);padding:10px;display:grid;grid-template-columns:auto repeat(2,minmax(0,1fr)) auto;gap:8px;align-items:stretch;text-align:left}
+.seg{display:flex;background:var(--sand);border-radius:16px;padding:4px}
+.seg button{border:0;background:transparent;border-radius:12px;padding:0 18px;font:600 15px Figtree,sans-serif;color:var(--mute);cursor:pointer}
+.seg button[aria-pressed=true]{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.field{display:flex;flex-direction:column;justify-content:center;padding:8px 16px;border-radius:16px;min-width:0}
+.field:hover{background:var(--sand)}
+.field label{font-size:12px;color:var(--mute);font-weight:600}
+.field select{border:0;background:transparent;font:600 16px Figtree,sans-serif;color:var(--ink);padding:2px 0;outline:none;min-width:0;width:100%;appearance:none;cursor:pointer}
+.search .btn{border-radius:16px;padding:0 28px}
+
+.trust{display:flex;justify-content:center;flex-wrap:wrap;gap:12px 34px;margin-top:34px;color:var(--mute);font-size:15px}
+.trust span{display:flex;align-items:center;gap:8px}
+.trust svg{width:18px;height:18px;color:var(--brand)}
+
+/* cinta */
+.ribbon{margin-top:72px;border-block:1px solid var(--line);overflow:hidden;padding:18px 0;background:var(--sand)}
+.ribbon .t{display:flex;gap:46px;width:max-content;animation:mq 34s linear infinite}
+.ribbon span{font-family:"Playfair Display",serif;font-size:24px;font-style:italic;color:var(--brand);white-space:nowrap}
+.ribbon span:after{content:"✦";font-style:normal;color:var(--gold);margin-left:46px;font-size:14px;vertical-align:middle}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* propiedades */
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:10px 18px;font:600 14px Figtree,sans-serif;cursor:pointer;color:var(--mute)}
+.chip[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;margin-top:40px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .35s,box-shadow .35s}
+.card:hover{transform:translateY(-4px);box-shadow:0 24px 50px -30px rgba(20,30,35,.4)}
+.card[hidden]{display:none}
+.ph{position:relative;aspect-ratio:3/2;background:#D9D2C6 linear-gradient(135deg,#e2dbcf,#c8bfb1);overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s;color:transparent}
+.card:hover .ph img{transform:scale(1.04)}
+.badge{position:absolute;left:14px;top:14px;background:#fff;color:var(--ink);border-radius:999px;padding:6px 12px;font:600 12px Figtree,sans-serif}
+.badge.arr{background:var(--brand);color:#fff}
+.code{position:absolute;right:14px;top:14px;background:rgba(0,0,0,.45);color:#fff;border-radius:8px;padding:5px 9px;font:500 11px "DM Mono",monospace;letter-spacing:.08em}
+.cb{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+.price{font-family:"Playfair Display",serif;font-size:28px;font-weight:600}
+.price small{font:500 14px Figtree,sans-serif;color:var(--mute);margin-left:6px}
+.cb h3{font:600 17px/1.35 Figtree,sans-serif;margin-top:6px}
+.loc{color:var(--mute);font-size:15px;margin-top:2px}
+.specs{display:flex;gap:16px;flex-wrap:wrap;margin:16px 0 18px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--ink)}
+.specs span{display:flex;align-items:center;gap:6px}
+.specs svg{width:17px;height:17px;color:var(--mute)}
+.cb .btn{margin-top:auto;width:100%}
+.note{color:var(--mute);font-size:14px;margin-top:22px}
+
+/* servicios */
+.dark{background:var(--brand-2);color:#EEF1F0}
+.dark .eyebrow{color:var(--gold)}
+.dark .lead{color:rgba(238,241,240,.72)}
+.svc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:46px}
+.svc article{border:1px solid rgba(255,255,255,.14);border-radius:var(--r);padding:28px 24px;background:rgba(255,255,255,.04);transition:background .3s}
+.svc article:hover{background:rgba(255,255,255,.08)}
+.svc .n{font-family:"DM Mono",monospace;color:var(--gold);font-size:13px}
+.svc h3{font-size:26px;margin:22px 0 10px}
+.svc p{margin:0;color:rgba(238,241,240,.72);font-size:16px}
+.svc a{display:inline-block;margin-top:18px;color:#fff;font-weight:600;font-size:15px;text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px}
+
+/* simulador */
+.sim{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:start;margin-top:10px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:24px;padding:30px}
+.row{margin-bottom:22px}
+.row label{display:flex;justify-content:space-between;font-weight:600;font-size:15px;margin-bottom:10px}
+.row label output{font-family:"DM Mono",monospace;color:var(--brand);font-weight:500}
+input[type=range]{width:100%;accent-color:var(--brand)}
+.uf{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--mute)}
+.uf input{width:110px;border:1.5px solid var(--line);border-radius:10px;padding:8px 10px;font:500 15px "DM Mono",monospace}
+.result{background:var(--sand);border-radius:24px;padding:34px;position:sticky;top:100px}
+.result .big{font-family:"Playfair Display",serif;font-size:clamp(44px,5vw,64px);color:var(--brand);line-height:1;margin:10px 0 6px;font-variant-numeric:tabular-nums}
+.result dl{display:grid;grid-template-columns:1fr auto;gap:10px 16px;margin:26px 0 0;font-size:15px}
+.result dt{color:var(--mute)}.result dd{margin:0;font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
+.disc{font-size:13px;color:var(--mute);margin-top:22px}
+
+/* proceso */
+.steps{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:56px}
+.steps svg.line{position:absolute;left:0;top:26px;width:100%;height:6px;overflow:visible}
+.steps svg.line path{fill:none;stroke:var(--brand);stroke-width:2;stroke-linecap:round}
+.steps svg.line path.bg{stroke:var(--line)}
+.step{position:relative;padding-top:74px}
+.dot{position:absolute;top:0;left:0;width:54px;height:54px;border-radius:50%;background:var(--paper);border:2px solid var(--line);display:grid;place-items:center;font-family:"DM Mono",monospace;font-size:14px;transition:background .4s,border-color .4s,color .4s}
+.step.on .dot{background:var(--brand);border-color:var(--brand);color:#fff}
+.step h3{font-size:24px}
+.step p{color:var(--mute);margin:8px 0 0;font-size:16px}
+
+/* formulario */
+.contact{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:start}
+.ci{margin-top:30px;display:grid;gap:14px}
+.ci a,.ci div{display:flex;gap:14px;align-items:center;text-decoration:none;font-weight:500}
+.ci i{width:46px;height:46px;border-radius:14px;background:var(--sand);display:grid;place-items:center;color:var(--brand);flex:none}
+.ci svg{width:20px;height:20px}
+form.panel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.f{display:flex;flex-direction:column;gap:6px;min-width:0}
+.f.full{grid-column:1/-1}
+.f label{font-size:14px;font-weight:600}
+.f input,.f select,.f textarea{border:1.5px solid var(--line);border-radius:12px;padding:13px 14px;font:400 16px Figtree,sans-serif;background:var(--paper);color:var(--ink);width:100%}
+.f input:focus,.f select:focus,.f textarea:focus{outline:2px solid var(--brand);outline-offset:1px}
+.f textarea{min-height:96px;resize:vertical}
+.err{color:#B3372B;font-size:13px;min-height:0}
+form.panel .btn{grid-column:1/-1;padding:17px}
+.ok{grid-column:1/-1;background:var(--sand);border-radius:14px;padding:16px;font-size:15px;display:none}
+
+/* faq */
+.faq{max-width:820px;margin:40px auto 0}
+details{border-bottom:1px solid var(--line);padding:6px 0}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:18px 0;font-weight:600;font-size:18px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font-size:26px;line-height:1;color:var(--brand);transition:transform .3s}
+details[open] summary:after{transform:rotate(45deg)}
+details p{margin:0 0 20px;color:var(--mute)}
+
+/* footer */
+footer{background:var(--ink);color:#C9CCCB;padding:64px 0 36px;font-size:15px}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px}
+footer h4{color:#fff;font:600 15px Figtree,sans-serif;margin:0 0 14px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+footer a{text-decoration:none}footer a:hover{color:#fff}
+.sign{border-top:1px solid rgba(255,255,255,.12);margin-top:44px;padding-top:24px;font-size:13px;color:#8E9493;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.sign a{color:var(--gold)}
+
+.fab{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:18px;z-index:40;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(0,0,0,.4)}
+.fab svg{width:30px;height:30px}
+
+/* movimiento */
+.in{opacity:0;transform:translateY(26px);filter:blur(10px);animation:up .9s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes up{to{opacity:1;transform:none;filter:none}}
+.rv{transform:translateY(30px);transition:transform .9s cubic-bezier(.2,.7,.2,1),opacity .9s;opacity:.001}
+.rv.vis{transform:none;opacity:1}
+.no-js .rv{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.in{animation:none;opacity:1;transform:none;filter:none}.rv{opacity:1;transform:none;transition:none}.ribbon .t{animation:none}}
+
+@media (max-width:980px){
+  .links{display:none}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .svc{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sim,.contact{grid-template-columns:minmax(0,1fr)}
+  .result{position:static}
+  .search{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .seg{grid-column:1/-1}.seg button{flex:1;padding:12px}
+  .search .btn{grid-column:1/-1;padding:16px}
+  .fg{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.fg>div:first-child{grid-column:1/-1}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .nav .btn span{display:none}.nav .btn{padding:12px}
+  .grid,.svc{grid-template-columns:minmax(0,1fr)}
+  .steps{grid-template-columns:minmax(0,1fr);gap:8px}
+  .steps svg.line{display:none}
+  .step{padding:0 0 22px 74px;min-height:76px}
+  .capsule{border-radius:160px 160px var(--r) var(--r)}
+  .capsule .cap{bottom:auto;top:auto;bottom:48px;left:50%;transform:translateX(-50%);white-space:nowrap}
+  .search{margin-top:-30px;grid-template-columns:minmax(0,1fr)}
+  form.panel{grid-template-columns:minmax(0,1fr)}
+  .panel,.result{padding:22px}
+  .fg{grid-template-columns:minmax(0,1fr)}
+}
+</style>
+</head>
+<body class="no-js">
+<script>document.body.classList.remove("no-js")</script>
+
+<div class="pitch" id="pitch" hidden>Propuesta de página web para <b id="pName">tu corredora</b>, preparada por North Frame. Colores, fotos y textos se adaptan a tu marca. <a id="pWa" href="https://wa.me/56937095082" target="_blank" rel="noopener">Me interesa →</a></div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="#inicio"><span class="m" id="mono">PA</span><span data-name>Propiedades Andes</span></a>
+    <nav class="links" aria-label="Principal"><a href="#propiedades">Propiedades</a><a href="#servicios">Servicios</a><a href="#simulador">Simulador</a><a href="#contacto">Publica tu propiedad</a></nav>
+    <a class="btn pri" data-wa="Hola, quiero información sobre sus propiedades." href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2s.2-1.1.1-1.2l-.4-.2z"/></svg><span>Escríbenos</span></a>
+  </div>
+</header>
+
+<main id="inicio">
+<section class="hero">
+  <div class="wrap">
+    <span class="mono eyebrow in" style="animation-delay:.05s">Corredora de propiedades · <span data-comuna>Santiago</span></span>
+    <h1 class="in" style="animation-delay:.15s">Encuentra tu próximo hogar, <em>sin perder tiempo</em></h1>
+    <p class="lead in" style="animation-delay:.3s">Venta y arriendo de departamentos, casas y oficinas en <span data-comuna>Santiago</span> y alrededores. Te acompañamos desde la primera visita hasta la firma en notaría.</p>
+    <div class="capsule in" style="animation-delay:.4s">
+      <img src="https://images.unsplash.com/photo-1654060024449-b9fe864495ac?w=1800&q=72&auto=format&fit=crop" alt="Vista de Santiago con la cordillera al fondo" fetchpriority="high">
+      <span class="cap mono">Santiago · Región Metropolitana</span>
+    </div>
+    <form class="search in" style="animation-delay:.55s" id="search" role="search" aria-label="Buscar propiedades">
+      <div class="seg" role="group" aria-label="Operación"><button type="button" aria-pressed="true" data-op="venta">Comprar</button><button type="button" aria-pressed="false" data-op="arriendo">Arrendar</button></div>
+      <div class="field"><label for="sTipo">Tipo</label><select id="sTipo"><option value="todos">Todos</option><option value="depto">Departamento</option><option value="casa">Casa</option></select></div>
+      <div class="field"><label for="sCom">Comuna</label><select id="sCom"><option value="todas">Todas</option><option>Providencia</option><option>Ñuñoa</option><option>Las Condes</option><option>La Reina</option><option>Santiago</option><option>Peñalolén</option></select></div>
+      <button class="btn pri" type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Buscar</button>
+    </form>
+    <div class="trust in" style="animation-delay:.7s">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>Contratos y documentos revisados</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Respuesta el mismo día</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10.5 12 3l9 7.5V21H3z"/><path d="M9 21v-6h6v6"/></svg>Visitas coordinadas a tu horario</span>
+    </div>
+  </div>
+  <div class="ribbon" aria-hidden="true"><div class="t"><span>Venta</span><span>Arriendo</span><span>Tasación comercial</span><span>Administración de arriendos</span><span>Asesoría en crédito hipotecario</span><span>Venta</span><span>Arriendo</span><span>Tasación comercial</span><span>Administración de arriendos</span><span>Asesoría en crédito hipotecario</span></div></div>
+</section>
+
+<section class="sec" id="propiedades">
+  <div class="wrap">
+    <div class="head rv">
+      <div><span class="mono eyebrow">Propiedades destacadas</span><h2>Elige, visita y decide</h2></div>
+      <div class="chips" role="group" aria-label="Filtrar propiedades"><button class="chip" aria-pressed="true" data-f="todas">Todas</button><button class="chip" aria-pressed="false" data-f="venta">Venta</button><button class="chip" aria-pressed="false" data-f="arriendo">Arriendo</button></div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p class="note" id="empty" hidden>No hay propiedades con ese filtro. Escríbenos y te avisamos cuando llegue una.</p>
+    <p class="note">Propiedades de ejemplo para mostrar el diseño. En tu página van tus propiedades reales, con fotos, precios y planos.</p>
+  </div>
+</section>
+
+<section class="sec dark" id="servicios">
+  <div class="wrap">
+    <div class="rv"><span class="mono eyebrow">Para propietarios</span><h2>Tu propiedad en buenas manos</h2><p class="lead">Publicamos, mostramos y negociamos por ti. Tú solo apruebas.</p></div>
+    <div class="svc">
+      <article class="rv"><span class="n">01</span><h3>Vende</h3><p>Fotos profesionales, publicación en los principales portales y visitas filtradas.</p><a href="#contacto" data-pre="Venta">Quiero vender</a></article>
+      <article class="rv"><span class="n">02</span><h3>Arrienda</h3><p>Evaluamos al arrendatario, redactamos el contrato y entregamos con inventario.</p><a href="#contacto" data-pre="Arriendo">Quiero arrendar</a></article>
+      <article class="rv"><span class="n">03</span><h3>Administra</h3><p>Cobro mensual, mantenciones y rendición clara para que no te preocupes.</p><a href="#contacto" data-pre="Administración">Quiero que la administren</a></article>
+      <article class="rv"><span class="n">04</span><h3>Tasa</h3><p>Valor comercial según propiedades similares vendidas en tu sector.</p><a href="#contacto" data-pre="Tasación">Quiero tasar</a></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="simulador">
+  <div class="wrap">
+    <div class="rv"><span class="mono eyebrow">Simulador</span><h2>¿Cuánto sería tu dividendo?</h2><p class="lead">Mueve los valores y mira una estimación al instante.</p></div>
+    <div class="sim" style="margin-top:44px">
+      <div class="panel rv">
+        <div class="row"><label for="pPrecio">Precio de la propiedad <output id="oPrecio"></output></label><input type="range" id="pPrecio" min="1500" max="15000" step="100" value="4500"></div>
+        <div class="row"><label for="pPie">Pie <output id="oPie"></output></label><input type="range" id="pPie" min="10" max="50" step="1" value="20"></div>
+        <div class="row"><label for="pPlazo">Plazo <output id="oPlazo"></output></label><input type="range" id="pPlazo" min="10" max="30" step="5" value="25"></div>
+        <div class="row"><label for="pTasa">Tasa anual <output id="oTasa"></output></label><input type="range" id="pTasa" min="3" max="7" step="0.1" value="4.5"></div>
+        <div class="uf"><label for="pUf">Valor UF referencial</label><input id="pUf" type="number" inputmode="decimal" value="39500" min="30000" max="60000"> <span>pesos</span></div>
+      </div>
+      <div class="result rv">
+        <span class="mono" style="color:var(--mute)">Dividendo mensual estimado</span>
+        <div class="big" id="rUf">— UF</div>
+        <div id="rClp" style="font-weight:600;font-size:18px">≈ $—</div>
+        <dl><dt>Crédito</dt><dd id="rCred">—</dd><dt>Pie</dt><dd id="rPie">—</dd><dt>Renta sugerida</dt><dd id="rRenta">—</dd></dl>
+        <a class="btn pri" style="margin-top:26px;width:100%" data-wa-sim href="#" target="_blank" rel="noopener">Quiero asesoría con mi crédito</a>
+        <p class="disc">Simulación referencial: no incluye seguros, gastos operacionales ni evaluación del banco. La renta sugerida considera que el dividendo no supere el 25 % de tus ingresos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--sand)">
+  <div class="wrap">
+    <div class="rv"><span class="mono eyebrow">Cómo trabajamos</span><h2>De la visita a las llaves</h2></div>
+    <div class="steps" id="steps">
+      <svg class="line" viewBox="0 0 1000 6" preserveAspectRatio="none" aria-hidden="true"><path class="bg" d="M27 3H973"/><path class="fg" id="lineFg" d="M27 3H973"/></svg>
+      <div class="step"><span class="dot">01</span><h3>Conversamos</h3><p>Nos cuentas qué buscas, tu presupuesto y en qué comunas.</p></div>
+      <div class="step"><span class="dot">02</span><h3>Visitas</h3><p>Te mostramos solo propiedades que cumplen lo que pediste.</p></div>
+      <div class="step"><span class="dot">03</span><h3>Revisión legal</h3><p>Estudio de títulos, certificado de dominio vigente y de hipotecas y gravámenes.</p></div>
+      <div class="step"><span class="dot">04</span><h3>Firma y entrega</h3><p>Promesa, escritura en notaría e inscripción en el Conservador.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="contacto">
+  <div class="wrap contact">
+    <div class="rv">
+      <span class="mono eyebrow">Publica tu propiedad</span>
+      <h2>¿Quieres vender o arrendar?</h2>
+      <p class="lead">Déjanos tus datos y te contactamos para coordinar una visita y una tasación sin costo.</p>
+      <div class="ci">
+        <a data-wa="Hola, quiero publicar mi propiedad." href="#" target="_blank" rel="noopener"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.5A9 9 0 1 1 21 12z"/></svg></i><span>WhatsApp <b data-phone>+56 9 0000 0000</b></span></a>
+        <div><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></i><span>Oficina en <span data-comuna>Santiago</span></span></div>
+        <div><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></i><span>Lunes a viernes de 9:00 a 19:00 · sábado de 10:00 a 14:00</span></div>
+      </div>
+    </div>
+    <form class="panel rv" id="form" novalidate>
+      <div class="f"><label for="fN">Nombre</label><input id="fN" autocomplete="name"><span class="err" id="eN"></span></div>
+      <div class="f"><label for="fT">WhatsApp</label><input id="fT" inputmode="tel" autocomplete="tel" placeholder="9 1234 5678"><span class="err" id="eT"></span></div>
+      <div class="f"><label for="fO">Quiero</label><select id="fO"><option>Venta</option><option>Arriendo</option><option>Administración</option><option>Tasación</option><option>Comprar o arrendar</option></select></div>
+      <div class="f"><label for="fP">Tipo de propiedad</label><select id="fP"><option>Departamento</option><option>Casa</option><option>Oficina</option><option>Terreno</option></select></div>
+      <div class="f full"><label for="fC">Comuna y detalle</label><textarea id="fC" placeholder="Ej.: departamento de 2 dormitorios en Ñuñoa, con estacionamiento"></textarea></div>
+      <button class="btn pri" type="submit">Enviar por WhatsApp</button>
+      <div class="ok" id="ok" role="status"></div>
+    </form>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="rv" style="text-align:center"><span class="mono eyebrow">Preguntas frecuentes</span><h2>Antes de decidir</h2></div>
+    <div class="faq">
+      <details><summary>¿Qué documentos necesito para vender?</summary><p>Principalmente: copia de la escritura, certificado de dominio vigente, certificado de hipotecas y gravámenes, certificado de avalúo fiscal y, si es departamento, el reglamento de copropiedad. Te ayudamos a pedirlos.</p></details>
+      <details><summary>¿Cuánto cobran por vender o arrendar?</summary><p>La comisión se informa y se firma por escrito antes de publicar, para que sepas exactamente cuánto pagarás y cuándo.</p></details>
+      <details><summary>¿Qué piden para arrendar?</summary><p>Normalmente, liquidaciones de sueldo o declaración de renta, informe comercial y, en algunos casos, un aval. El contrato incluye inventario y fotos del estado de la propiedad.</p></details>
+      <details><summary>¿Me ayudan con el crédito hipotecario?</summary><p>Sí: te orientamos para comparar ofertas de bancos y preparar tus documentos. La aprobación final depende de cada banco.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fg">
+      <div><a class="logo" href="#inicio" style="color:#fff"><span class="m" data-mono>PA</span><span data-name>Propiedades Andes</span></a><p style="margin:16px 0 0;max-width:40ch">Venta, arriendo y administración de propiedades en <span data-comuna>Santiago</span>.</p></div>
+      <div><h4>Navegación</h4><ul><li><a href="#propiedades">Propiedades</a></li><li><a href="#servicios">Servicios</a></li><li><a href="#simulador">Simulador</a></li><li><a href="#contacto">Publica tu propiedad</a></li></ul></div>
+      <div><h4>Contacto</h4><ul><li><a data-wa="Hola, quiero información." href="#" target="_blank" rel="noopener">WhatsApp <span data-phone>+56 9 0000 0000</span></a></li><li><span data-comuna>Santiago</span>, Región Metropolitana</li></ul></div>
+    </div>
+    <div class="sign"><span>Sitio demostrativo diseñado por <a href="https://northframe.cl" target="_blank" rel="noopener">North Frame</a>. Propiedades, precios y datos de contacto de ejemplo; fotografías referenciales de Unsplash.</span><span>Diseño y desarrollo web: North Frame</span></div>
+  </div>
+</footer>
+
+<a class="fab" data-wa="Hola, quiero información sobre sus propiedades." href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2s.2-1.1.1-1.2l-.4-.2z"/></svg></a>
+
+<script>
+(function(){
+  /* Personalización por URL: ?n=Nombre&c=Comuna&w=56912345678&col=1F4E5F */
+  var q=new URLSearchParams(location.search);
+  function g(k){return (q.get(k)||"").trim().slice(0,60)}
+  var name=g("n")||"Propiedades Andes", com=g("c")||"Santiago", wa=g("w").replace(/\D/g,""), col=g("col").replace(/[^0-9a-fA-F]/g,"");
+  if(wa.length===9)wa="56"+wa;
+  var demoWa=!wa; if(!wa)wa="56937095082";
+  var NF="56937095082";
+  if(/^([0-9a-f]{3}|[0-9a-f]{6})$/i.test(col)){
+    if(col.length===3)col=col.replace(/./g,"$&$&");
+    var r=parseInt(col.slice(0,2),16),gg=parseInt(col.slice(2,4),16),b=parseInt(col.slice(4,6),16);
+    var d=function(x){return Math.round(x*.72).toString(16).padStart(2,"0")};
+    document.documentElement.style.setProperty("--brand","#"+col);
+    document.documentElement.style.setProperty("--brand-2","#"+d(r)+d(gg)+d(b));
+  }
+  var ini=name.replace(/[^A-Za-zÁÉÍÓÚÑáéíóúñ ]/g," ").split(/\s+/).filter(function(w){return w.length>2||/^[A-ZÁÉÍÓÚÑ]/.test(w)}).slice(0,2).map(function(w){return w[0].toUpperCase()}).join("")||"P";
+  document.querySelectorAll("[data-name]").forEach(function(e){e.textContent=name});
+  document.querySelectorAll("[data-comuna]").forEach(function(e){e.textContent=com});
+  document.querySelectorAll("#mono,[data-mono]").forEach(function(e){e.textContent=ini});
+  var pretty=wa.length===11?"+"+wa.slice(0,2)+" "+wa.slice(2,3)+" "+wa.slice(3,7)+" "+wa.slice(7):"+"+wa;
+  document.querySelectorAll("[data-phone]").forEach(function(e){e.textContent=demoWa?"+56 9 0000 0000":pretty});
+  document.title=name+" · Propuesta de página web";
+  if(q.get("n")){
+    var p=document.getElementById("pitch");p.hidden=false;
+    document.getElementById("pName").textContent=name;
+    document.getElementById("pWa").href="https://wa.me/"+NF+"?text="+encodeURIComponent("Hola Javier, vi la propuesta de página web para "+name+" y me interesa saber más.");
+  }
+  function link(t){return "https://wa.me/"+wa+"?text="+encodeURIComponent(t)}
+  document.querySelectorAll("[data-wa]").forEach(function(a){a.href=link(a.getAttribute("data-wa"))});
+
+  /* Propiedades de ejemplo */
+  var U="https://images.unsplash.com/photo-";
+  var P=[
+    {id:"PA-1042",op:"venta",tipo:"depto",com:"Providencia",t:"Departamento luminoso cerca del metro",img:U+"1746517757473-7c88850e539b?w=900&q=70&auto=format&fit=crop",price:"UF 5.900",m2:68,d:2,b:2,e:1},
+    {id:"PA-1057",op:"arriendo",tipo:"depto",com:"Ñuñoa",t:"Departamento con balcón y bodega",img:U+"1760894492960-5b0a2da0676d?w=900&q=70&auto=format&fit=crop",price:"$620.000",per:"/ mes",m2:54,d:2,b:1,e:1},
+    {id:"PA-1063",op:"venta",tipo:"casa",com:"La Reina",t:"Casa moderna con terraza y jardín",img:"casa-moderna.jpg",price:"UF 14.500",m2:210,d:4,b:3,e:2},
+    {id:"PA-1071",op:"arriendo",tipo:"depto",com:"Santiago",t:"Departamento remodelado, cocina integrada",img:U+"1682888813734-b1b0a4f79385?w=900&q=70&auto=format&fit=crop",price:"$480.000",per:"/ mes",m2:46,d:1,b:1,e:0},
+    {id:"PA-1078",op:"venta",tipo:"casa",com:"Peñalolén",t:"Casa de un piso con gran patio",img:"casa-jardin.jpg",price:"UF 9.800",m2:160,d:3,b:2,e:2},
+    {id:"PA-1084",op:"venta",tipo:"casa",com:"Las Condes",t:"Casa con vista en sector alto",img:"casa-ladera.jpg",price:"UF 21.000",m2:280,d:4,b:4,e:3}
+  ];
+  var I={m2:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>',
+    d:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 18h18M5 10V6h14v4"/></svg>',
+    b:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16v3a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM6 12V5a2 2 0 0 1 4 0"/></svg>',
+    e:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17h14l-1.5-6h-11zM7 11l1.5-4h7L17 11"/><circle cx="8" cy="17" r="1.6"/><circle cx="16" cy="17" r="1.6"/></svg>'};
+  var grid=document.getElementById("grid");
+  grid.innerHTML=P.map(function(p){
+    return '<article class="card rv" data-op="'+p.op+'" data-tipo="'+p.tipo+'" data-com="'+p.com+'">'+
+    '<div class="ph"><img loading="lazy" src="'+p.img+'" alt="'+p.t+'"><span class="badge'+(p.op==="arriendo"?" arr":"")+'">'+(p.op==="venta"?"Venta":"Arriendo")+'</span><span class="code">'+p.id+'</span></div>'+
+    '<div class="cb"><div class="price">'+p.price+(p.per?'<small>'+p.per+'</small>':'')+'</div><h3>'+p.t+'</h3><div class="loc">'+p.com+', Región Metropolitana</div>'+
+    '<div class="specs"><span>'+I.m2+p.m2+' m² útiles</span><span>'+I.d+p.d+' dorm.</span><span>'+I.b+p.b+' baño'+(p.b>1?'s':'')+'</span>'+(p.e?'<span>'+I.e+p.e+' est.</span>':'')+'</div>'+
+    '<a class="btn ghost" target="_blank" rel="noopener" href="'+link("Hola, me interesa la propiedad "+p.id+" ("+p.t+", "+p.com+"). ¿Está disponible para visitar?")+'">Consultar por WhatsApp</a></div></article>';
+  }).join("");
+
+  var state={f:"todas",tipo:"todos",com:"todas"};
+  function apply(){
+    var n=0;
+    grid.querySelectorAll(".card").forEach(function(c){
+      var ok=(state.f==="todas"||c.dataset.op===state.f)&&(state.tipo==="todos"||c.dataset.tipo===state.tipo)&&(state.com==="todas"||c.dataset.com===state.com);
+      c.hidden=!ok; if(ok){n++;c.classList.add("vis")}
+    });
+    document.getElementById("empty").hidden=n>0;
+  }
+  function setChip(v){state.f=v;document.querySelectorAll(".chip").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.f===v)})}
+  document.querySelectorAll(".chip").forEach(function(b){b.addEventListener("click",function(){setChip(b.dataset.f);apply()})});
+  var op="venta";
+  document.querySelectorAll(".seg button").forEach(function(b){b.addEventListener("click",function(){op=b.dataset.op;document.querySelectorAll(".seg button").forEach(function(x){x.setAttribute("aria-pressed",x===b)})})});
+  document.getElementById("search").addEventListener("submit",function(e){
+    e.preventDefault();setChip(op);state.tipo=document.getElementById("sTipo").value;state.com=document.getElementById("sCom").value;apply();
+    document.getElementById("propiedades").scrollIntoView({behavior:"smooth"});
+  });
+
+  /* Simulador de dividendo */
+  var $=function(i){return document.getElementById(i)};
+  var fmt=function(n,d){return n.toLocaleString("es-CL",{minimumFractionDigits:d||0,maximumFractionDigits:d||0})};
+  function sim(){
+    var P=+$("pPrecio").value,pie=+$("pPie").value/100,n=+$("pPlazo").value*12,r=+$("pTasa").value/100/12,uf=+$("pUf").value||39500;
+    var L=P*(1-pie),c=L*r/(1-Math.pow(1+r,-n));
+    $("oPrecio").textContent="UF "+fmt(P);$("oPie").textContent=Math.round(pie*100)+" %";$("oPlazo").textContent=$("pPlazo").value+" años";$("oTasa").textContent=fmt(+$("pTasa").value,1)+" %";
+    $("rUf").textContent=fmt(c,1)+" UF";$("rClp").textContent="≈ $"+fmt(Math.round(c*uf/1000)*1000)+" al mes";
+    $("rCred").textContent="UF "+fmt(L);$("rPie").textContent="UF "+fmt(P*pie);$("rRenta").textContent="$"+fmt(Math.round(c*uf/.25/10000)*10000);
+    document.querySelector("[data-wa-sim]").href=link("Hola, simulé un crédito por una propiedad de UF "+fmt(P)+" con "+Math.round(pie*100)+"% de pie a "+$("pPlazo").value+" años. Me gustaría asesoría.");
+  }
+  ["pPrecio","pPie","pPlazo","pTasa","pUf"].forEach(function(i){$(i).addEventListener("input",sim)});sim();
+
+  /* Servicios preseleccionan el formulario */
+  document.querySelectorAll("[data-pre]").forEach(function(a){a.addEventListener("click",function(){$("fO").value=a.dataset.pre})});
+
+  /* Formulario → WhatsApp */
+  $("form").addEventListener("submit",function(e){
+    e.preventDefault();var ok=true,nm=$("fN").value.trim(),tl=$("fT").value.replace(/\D/g,"");
+    $("eN").textContent=nm.length<2?"Escribe tu nombre.":"";$("eT").textContent=tl.length<8?"Revisa tu WhatsApp: debe tener al menos 8 dígitos.":"";
+    if(nm.length<2||tl.length<8)return;
+    var msg="Hola, soy "+nm+". Quiero: "+$("fO").value+" · "+$("fP").value+". "+($("fC").value.trim()||"")+" Mi WhatsApp: "+$("fT").value.trim();
+    window.open(link(msg),"_blank","noopener");
+    var o=$("ok");o.style.display="block";o.textContent="Abrimos WhatsApp con tu mensaje listo. Solo presiona enviar.";
+  });
+
+  /* Nav sólida */
+  var nav=$("nav");addEventListener("scroll",function(){nav.classList.toggle("solid",scrollY>20)},{passive:true});
+
+  /* Revelado al entrar en pantalla */
+  var rm=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if("IntersectionObserver" in window&&!rm){
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("vis");io.unobserve(en.target)}})},{rootMargin:"0px 0px -8% 0px"});
+    document.querySelectorAll(".rv").forEach(function(el,i){el.style.transitionDelay=(el.classList.contains("card")||el.parentNode.classList.contains("svc")?(i%4)*90:0)+"ms";io.observe(el)});
+  } else document.querySelectorAll(".rv").forEach(function(el){el.classList.add("vis")});
+
+  /* Proceso que se dibuja */
+  var path=$("lineFg"),steps=document.querySelectorAll(".step"),len=946;
+  path.style.strokeDasharray=len;path.style.strokeDashoffset=rm?0:len;
+  if(rm){steps.forEach(function(s){s.classList.add("on")})}
+  else{
+    var so=new IntersectionObserver(function(es){if(es[0].isIntersecting){so.disconnect();var t0=null;
+      (function f(t){t0=t0||t;var k=Math.min((t-t0)/2200,1),e=1-Math.pow(1-k,3);path.style.strokeDashoffset=len*(1-e);
+        steps.forEach(function(s,i){if(e>=i/3-.02)s.classList.add("on")});if(k<1)requestAnimationFrame(f)})(performance.now())}},{threshold:.4});
+    so.observe($("steps"));
+  }
+})();
+</script>
+</body>
+</html>
