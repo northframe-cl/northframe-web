@@ -1,6 +1,6 @@
 /* Medición: pega aquí tus códigos cuando los tengas (déjalos vacíos para no medir) */
 const META_PIXEL_ID = "";   // ej: "123456789012345"
-const GA4_ID = "";          // ej: "G-XXXXXXXXXX"
+const GA4_ID = "G-JMCWD3DLRK";          // ej: "G-XXXXXXXXXX"
 
 (function () {
   if (window.self !== window.top || location.protocol === "file:") return;
