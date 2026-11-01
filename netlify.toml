@@ -17,3 +17,8 @@
   from = "/demo-*"
   to = "/trabajos"
   status = 301
+
+[[headers]]
+  for = "/assets/ads/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
